@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from apps.product.filters import ProductCustomFilter
-from apps.product.models.models import Product
+from apps.product.models import Product
 from .serializers import ProductListSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 

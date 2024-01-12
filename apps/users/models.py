@@ -4,12 +4,16 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils import timezone
 
+from apps.cart.models import Cart
+
 
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
         user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save()
+        Cart.objects.create(user=user)
+        return user
         return user
 
     def create_superuser(self, username, password=None, **extra_fields):
