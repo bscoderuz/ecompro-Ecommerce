@@ -19,6 +19,7 @@ class OrderSerializer(serializers.ModelSerializer):
             'phone_number',
             'email',
             'product',
+            'items',
             'delivery_type',
             'payment_method',
             'city',

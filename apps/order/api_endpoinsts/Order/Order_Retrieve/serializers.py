@@ -18,6 +18,7 @@ class OrderRetrieveSerializer(serializers.ModelSerializer):
             'city',
             'region',
             'address',
+            'quantity',
             'level',
             'delivery_date',
         ]
