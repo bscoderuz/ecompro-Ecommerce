@@ -1,7 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .choices import DELIVERY_TYPES, ORDER_STATUS
+from .choices import DELIVERY_TYPES, ORDER_STATUS, PAYMENT_STATUS
 from apps.product.models import Product
 
 
@@ -12,8 +12,9 @@ class Order(models.Model):
     phone_number = PhoneNumberField(region='UZ')
     email = models.EmailField(blank=True, null=True)
     delivery_type = models.CharField(choices=DELIVERY_TYPES, max_length=1)
-    payment_method = models.ForeignKey("PaymentType", related_name='orders', on_delete=models.SET_NULL,
+    payment_method = models.ForeignKey("PaymentType", related_name='orders', default='wp', on_delete=models.SET_NULL,
                                        null=True, blank=True)
+
     final_price = models.DecimalField(max_digits=24, decimal_places=2, default=0)
 
     city = models.CharField(max_length=128, blank=True, null=True)
